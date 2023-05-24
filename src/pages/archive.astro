@@ -1,0 +1,32 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/Header.astro";
+import ArchiveCard from "../components/ArchiveCard.astro";
+
+const data = await fetch("https://syezauaectamogglkmvc.supabase.co/rest/v1/products?order=id.asc&category=eq.Beers%20and%20Drinks", {
+  method: "GET",
+  headers: {
+    apikey:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN5ZXphdWFlY3RhbW9nZ2xrbXZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQ0OTcyODUsImV4cCI6MjAwMDA3MzI4NX0.5CbbGAvqETjhd1_tbVm-oa-4F_JHliJV0Xuy_dG2rms",
+  },
+}).then((res) => res.json());
+---
+
+<MainLayout title="BEERS BY KIDDUSH">
+  <Header slot="header" archive="active" />
+  <p>Below you can find all the beers ever brewed and designed by Kiddush. We are proud of our graphic design and taste, so why not show it?</p>
+  <section>
+    {
+      data.map((product) => {
+        return <ArchiveCard data={product} />;
+      })
+    }
+  </section>
+</MainLayout>
+<style>
+  p {
+    margin: 14px;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+</style>

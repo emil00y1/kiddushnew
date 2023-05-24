@@ -1,0 +1,281 @@
+---
+const { text, artclass, textclass, title, desc } = Astro.props;
+
+const { data } = Astro.props;
+console.log(data);
+---
+
+<article class={data.slug}>
+  <div class="cardheader">
+    <div class="flex">
+      <img class="can" src={`/img/products/${data.img}.webp`} alt="Beer Can" />
+      <div>
+        <h3 class={data.slug}>{data.name}</h3>
+        <p class={data.slug}>{data.type}</p>
+      </div>
+    </div>
+    <div class="barbox">
+      <span class={`bar bar1 ${data.slug}`}></span>
+      <span class={`bar bar2 ${data.slug}`}></span>
+    </div>
+  </div>
+  <div class="cardcontent">
+    <img src={`/img/archive/${data.img}.webp`} alt="Label" />
+    <h2 class={data.slug}>{data.name}</h2>
+    <p class={`type ${data.slug}`}>{data.type}</p>
+    <p class={data.slug}>{data.description}</p>
+  </div>
+</article>
+
+<style>
+  article {
+    padding: 14px;
+    max-height: 134px;
+    overflow: hidden;
+  }
+
+  article.active {
+    max-height: 1000px;
+  }
+  .cardheader {
+    display: flex;
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+  }
+  .cardcontent {
+    padding-top: 30px;
+    padding-bottom: 60px;
+  }
+
+  .flex {
+    display: flex;
+    gap: 22px;
+  }
+
+  img.can {
+    max-width: 40px;
+  }
+
+  h2 {
+    text-align: left;
+    font-style: italic;
+    text-transform: lowercase;
+    font-size: 27px;
+    padding-bottom: 6px;
+    padding-top: 70px;
+  }
+
+  h3 {
+    padding: 14px 0 12px 0;
+  }
+
+  p.type {
+    font-size: 27px;
+    font-style: italic;
+    padding-bottom: 6px;
+  }
+
+  .barbox {
+    position: relative;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+  }
+  .bar {
+    display: block;
+    height: 4px;
+    width: 26px;
+    border-radius: 10px;
+    position: absolute;
+    transition: transform 0.3s ease-in-out;
+  }
+  .bar1 {
+    transform: translate(-2px, 13px) rotate(45deg);
+  }
+  .bar2 {
+    transform: translate(14px, 13px) rotate(-45deg);
+  }
+
+  /* .barbox.active .bar1 {
+    width: 52px;
+    transform: translate(-8px, 22px) rotate(135deg);
+  }
+
+  .barbox.active .bar2 {
+    width: 52px;
+    transform: translate(-8px, 22px) rotate(-135deg);
+  } */
+  /* .barbox.active .bar1 {
+    transform: translate(14px, 13px) rotate(45deg);
+  }
+
+  .barbox.active .bar2 {
+    transform: translate(-2px, 13px) rotate(-45deg);
+  } */
+
+  .barbox.active .bar1 {
+    transform: translate(6px, 13px) rotate(45deg);
+  }
+
+  .barbox.active .bar2 {
+    transform: translate(6px, 13px) rotate(-45deg);
+  }
+  .barbox .bar::before,
+  .barbox .bar::after {
+    transition: transform 0.2s ease-in-out;
+  }
+  /******************************/
+  p.limone,
+  h3.limone,
+  h2.limone {
+    color: #000000;
+  }
+
+  article.limone {
+    background-color: #f6f2df;
+  }
+
+  .bar.limone {
+    background-color: #000000;
+  }
+  /******************************/
+
+  p.maple,
+  h3.maple,
+  h2.maple {
+    color: #ffffff;
+  }
+
+  article.maple {
+    background-color: #1d1d1b;
+  }
+
+  .bar.maple {
+    background-color: #ffffff;
+  }
+
+  /******************************/
+
+  p.againstexpectations,
+  h3.againstexpectations,
+  h2.againstexpectations {
+    color: #254798;
+  }
+
+  article.againstexpectations {
+    background-color: #e4e5e4;
+  }
+
+  .bar.againstexpectations {
+    background-color: #254798;
+  }
+
+  /******************************/
+
+  p.blaest,
+  h3.blaest,
+  h2.blaest {
+    color: #0c6756;
+  }
+
+  article.blaest {
+    background-color: #fefdf2;
+  }
+
+  .bar.blaest {
+    background-color: #0c6756;
+  }
+
+  /******************************/
+
+  p.sorachi,
+  h3.sorachi,
+  h2.sorachi {
+    color: #ebc8e0;
+  }
+
+  article.sorachi {
+    background-color: #2a2f6a;
+  }
+
+  .bar.sorachi {
+    background-color: #ebc8e0;
+  }
+
+  /******************************/
+
+  p.vabrus,
+  h3.vabrus,
+  h2.vabrus {
+    color: #fddfc3;
+  }
+
+  article.vabrus {
+    background-color: #1c3628;
+  }
+
+  .bar.vabrus {
+    background-color: #fddfc3;
+  }
+
+  /******************************/
+
+  p.passionfruit,
+  h3.passionfruit,
+  h2.passionfruit {
+    color: #fdfafb;
+  }
+
+  article.passionfruit {
+    background: linear-gradient(180deg, #9e84c1 0%, #a87cb0 26.49%, #c06f96 40.79%, #cc6685 53.57%, #e44a5c 76.28%, #e84050 100%);
+  }
+
+  .bar.passionfruit {
+    background-color: #fdfafb;
+  }
+
+  /******************************/
+
+  p.palelagerblend,
+  h3.palelagerblend,
+  h2.palelagerblend {
+    color: #262223;
+  }
+
+  article.palelagerblend {
+    background-color: #ffffff;
+  }
+
+  .bar.palelagerblend {
+    background-color: #262223;
+  }
+
+  /******************************/
+
+  p.pearlypeach,
+  h3.pearlypeach,
+  h2.pearlypeach {
+    color: #1c1e40;
+  }
+
+  article.pearlypeach {
+    background-color: #fad1c3;
+  }
+
+  .bar.pearlypeach {
+    background-color: #1c1e40;
+  }
+</style>
+
+<script>
+  const arrow = document.querySelector(".barbox");
+  const content = document.querySelector("article");
+
+  arrow.addEventListener("click", function () {
+    console.log("slayed");
+    this.classList.toggle("active");
+    content.classList.toggle("active");
+  });
+</script>
